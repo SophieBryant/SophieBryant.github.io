@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020 | SophieBryant的博客</title>
+  <title>pcm | SophieBryant的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="深漂一族，安卓开发程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SophieBryant的博客">
-<meta property="og:url" content="http://example.com/archives/2020/index.html">
+  <meta name="description" content="Android  adpcm 转 pcm  使用的是 Java 端调用 C++ 实现，因此你必须先了解什么是 JNI 这个是什么东西，才会知道怎么调用。 直接先给出 C++ 代码吧： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pcm">
+<meta property="og:url" content="http://example.com/2020/12/02/pcm/index.html">
 <meta property="og:site_name" content="SophieBryant的博客">
-<meta property="og:description" content="深漂一族，安卓开发程序员">
+<meta property="og:description" content="Android  adpcm 转 pcm  使用的是 Java 端调用 C++ 实现，因此你必须先了解什么是 JNI 这个是什么东西，才会知道怎么调用。 直接先给出 C++ 代码吧： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-02T04:14:48.085Z">
+<meta property="article:modified_time" content="2020-12-02T04:15:40.040Z">
 <meta property="article:author" content="Bryant">
 <meta name="twitter:card" content="summary">
   
@@ -130,238 +132,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-pcm" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2020-12-02T04:16:08.774Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">开发记录</a>
+    <h1 class="article-title" itemprop="name">
+      pcm
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/02/pcm/" class="archive-article-date">
+        
+        <a href="/2020/12/02/pcm/" class="archive-article-date">
   	<time datetime="2020-12-02T04:14:48.085Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/02/pcm/">pcm</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android  adpcm 转 pcm  使用的是 Java 端调用 C++ 实现，因此你必须先了解什么是 JNI 这个是什么东西，才会知道怎么调用。</p>
+<pre><code>直接先给出 C++ 代码吧：</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;***********************************************************</span><br><span class="line">Copyright 1992 by Stichting Mathematisch Centrum, Amsterdam, The</span><br><span class="line">Netherlands.</span><br><span class="line"></span><br><span class="line">                        All Rights Reserved</span><br><span class="line"></span><br><span class="line">Permission to use, copy, modify, and distribute this software and its </span><br><span class="line">documentation for any purpose and without fee is hereby granted, </span><br><span class="line">provided that the above copyright notice appear in all copies and that</span><br><span class="line">both that copyright notice and this permission notice appear in </span><br><span class="line">supporting documentation, and that the names of Stichting Mathematisch</span><br><span class="line">Centrum or CWI not be used in advertising or publicity pertaining to</span><br><span class="line">distribution of the software without specific, written prior permission.</span><br><span class="line"></span><br><span class="line">STICHTING MATHEMATISCH CENTRUM DISCLAIMS ALL WARRANTIES WITH REGARD TO</span><br><span class="line">THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND</span><br><span class="line">FITNESS, IN NO EVENT SHALL STICHTING MATHEMATISCH CENTRUM BE LIABLE</span><br><span class="line">FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span><br><span class="line">WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span><br><span class="line">ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT</span><br><span class="line">OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span><br><span class="line"></span><br><span class="line">******************************************************************&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">** Intel&#x2F;DVI ADPCM coder&#x2F;decoder.</span><br><span class="line">**</span><br><span class="line">** The algorithm for this coder was taken from the IMA Compatability Project</span><br><span class="line">** proceedings, Vol 2, Number 2; May 1992.</span><br><span class="line">**</span><br><span class="line">** Version 1.2, 18-Dec-92.</span><br><span class="line">**</span><br><span class="line">** Change log:</span><br><span class="line">** - Fixed a stupid bug, where the delta was computed as</span><br><span class="line">**   stepsize*code&#x2F;4 in stead of stepsize*(code+0.5)&#x2F;4.</span><br><span class="line">** - There was an off-by-one error causing it to pick</span><br><span class="line">**   an incorrect delta once in a blue moon.</span><br><span class="line">** - The NODIVMUL define has been removed. Computations are now always done</span><br><span class="line">**   using shifts, adds and subtracts. It turned out that, because the standard</span><br><span class="line">**   is defined using shift&#x2F;add&#x2F;subtract, you needed bits of fixup code</span><br><span class="line">**   (because the div&#x2F;mul simulation using shift&#x2F;add&#x2F;sub made some rounding</span><br><span class="line">**   errors that real div&#x2F;mul don&#39;t make) and all together the resultant code</span><br><span class="line">**   ran slower than just using the shifts all the time.</span><br><span class="line">** - Changed some of the variable names to be more meaningful.</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">#include &quot;adpcm.h&quot;</span><br><span class="line">#include &lt;stdint.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt; &#x2F;*DBG*&#x2F;</span><br><span class="line"></span><br><span class="line">#ifndef __STDC__</span><br><span class="line">#define signed</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;#define ADPCM_ENDIAN_SWAP</span><br><span class="line"></span><br><span class="line">#ifdef ADPCM_ENDIAN_SWAP</span><br><span class="line">uint16_t swap_uint16( uint16_t val ) </span><br><span class="line">&#123;</span><br><span class="line">   return (val &lt;&lt; 8) | (val &gt;&gt; 8 );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;! Byte swap short</span><br><span class="line">int16_t swap_int16( int16_t val ) </span><br><span class="line">&#123;</span><br><span class="line">   return (val &lt;&lt; 8) | ((val &gt;&gt; 8) &amp; 0xFF);</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">&#x2F;* Intel ADPCM step variation table *&#x2F;</span><br><span class="line">static int indexTable[16] &#x3D; &#123;</span><br><span class="line">    -1, -1, -1, -1, 2, 4, 6, 8,</span><br><span class="line">    -1, -1, -1, -1, 2, 4, 6, 8,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">static int stepsizeTable[89] &#x3D; &#123;</span><br><span class="line">    7, 8, 9, 10, 11, 12, 13, 14, 16, 17,</span><br><span class="line">    19, 21, 23, 25, 28, 31, 34, 37, 41, 45,</span><br><span class="line">    50, 55, 60, 66, 73, 80, 88, 97, 107, 118,</span><br><span class="line">    130, 143, 157, 173, 190, 209, 230, 253, 279, 307,</span><br><span class="line">    337, 371, 408, 449, 494, 544, 598, 658, 724, 796,</span><br><span class="line">    876, 963, 1060, 1166, 1282, 1411, 1552, 1707, 1878, 2066,</span><br><span class="line">    2272, 2499, 2749, 3024, 3327, 3660, 4026, 4428, 4871, 5358,</span><br><span class="line">    5894, 6484, 7132, 7845, 8630, 9493, 10442, 11487, 12635, 13899,</span><br><span class="line">    15289, 16818, 18500, 20350, 22385, 24623, 27086, 29794, 32767</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">void adpcm_coder(short *indata, char *outdata, int len, adpcm_state *state)</span><br><span class="line">&#123;</span><br><span class="line">    short *inp;          &#x2F;* Input buffer pointer *&#x2F;</span><br><span class="line">    signed char *outp;    &#x2F;* output buffer pointer *&#x2F;</span><br><span class="line">    int val;         &#x2F;* Current input sample value *&#x2F;</span><br><span class="line">    int sign;        &#x2F;* Current adpcm sign bit *&#x2F;</span><br><span class="line">    int delta;       &#x2F;* Current adpcm output value *&#x2F;</span><br><span class="line">    int diff;        &#x2F;* Difference between val and valprev *&#x2F;</span><br><span class="line">    int step;        &#x2F;* Stepsize *&#x2F;</span><br><span class="line">    int valpred;      &#x2F;* Predicted output value *&#x2F;</span><br><span class="line">    int vpdiff;          &#x2F;* Current change to valpred *&#x2F;</span><br><span class="line">    int index;       &#x2F;* Current step change index *&#x2F;</span><br><span class="line">    int outputbuffer;     &#x2F;* place to keep previous 4-bit value *&#x2F;</span><br><span class="line">    int bufferstep;       &#x2F;* toggle between outputbuffer&#x2F;output *&#x2F;</span><br><span class="line">   short tmp;</span><br><span class="line">   </span><br><span class="line">    outp &#x3D; (signed char *)outdata;</span><br><span class="line">    inp &#x3D; indata;</span><br><span class="line"></span><br><span class="line">    valpred &#x3D; state-&gt;valprev;</span><br><span class="line">    index &#x3D; state-&gt;index;</span><br><span class="line">    step &#x3D; stepsizeTable[index];</span><br><span class="line">    </span><br><span class="line">    bufferstep &#x3D; 1;</span><br><span class="line"></span><br><span class="line">    for ( ; len &gt; 0 ; len-- ) &#123;</span><br><span class="line">#ifdef ADPCM_ENDIAN_SWAP   </span><br><span class="line">   tmp &#x3D; swap_int16(*inp);</span><br><span class="line">   inp++;</span><br><span class="line">   val &#x3D; tmp;</span><br><span class="line">#else</span><br><span class="line">   val &#x3D; *inp++;</span><br><span class="line">#endif </span><br><span class="line"></span><br><span class="line">   &#x2F;* Step 1 - compute difference with previous value *&#x2F;</span><br><span class="line">   diff &#x3D; val - valpred;</span><br><span class="line">   sign &#x3D; (diff &lt; 0) ? 8 : 0;</span><br><span class="line">   if ( sign ) diff &#x3D; (-diff);</span><br><span class="line"></span><br><span class="line">   &#x2F;* Step 2 - Divide and clamp *&#x2F;</span><br><span class="line">   &#x2F;* Note:</span><br><span class="line">   ** This code *approximately* computes:</span><br><span class="line">   **    delta &#x3D; diff*4&#x2F;step;</span><br><span class="line">   **    vpdiff &#x3D; (delta+0.5)*step&#x2F;4;</span><br><span class="line">   ** but in shift step bits are dropped. The net result of this is</span><br><span class="line">   ** that even if you have fast mul&#x2F;div hardware you cannot put it to</span><br><span class="line">   ** good use since the fixup would be too expensive.</span><br><span class="line">   *&#x2F;</span><br><span class="line">   delta &#x3D; 0;</span><br><span class="line">   vpdiff &#x3D; (step &gt;&gt; 3);</span><br><span class="line">   </span><br><span class="line">   if ( diff &gt;&#x3D; step ) &#123;</span><br><span class="line">       delta &#x3D; 4;</span><br><span class="line">       diff -&#x3D; step;</span><br><span class="line">       vpdiff +&#x3D; step;</span><br><span class="line">   &#125;</span><br><span class="line">   step &gt;&gt;&#x3D; 1;</span><br><span class="line">   if ( diff &gt;&#x3D; step  ) &#123;</span><br><span class="line">       delta |&#x3D; 2;</span><br><span class="line">       diff -&#x3D; step;</span><br><span class="line">       vpdiff +&#x3D; step;</span><br><span class="line">   &#125;</span><br><span class="line">   step &gt;&gt;&#x3D; 1;</span><br><span class="line">   if ( diff &gt;&#x3D; step ) &#123;</span><br><span class="line">       delta |&#x3D; 1;</span><br><span class="line">       vpdiff +&#x3D; step;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   &#x2F;* Step 3 - Update previous value *&#x2F;</span><br><span class="line">   if ( sign )</span><br><span class="line">     valpred -&#x3D; vpdiff;</span><br><span class="line">   else</span><br><span class="line">     valpred +&#x3D; vpdiff;</span><br><span class="line"></span><br><span class="line">   &#x2F;* Step 4 - Clamp previous value to 16 bits *&#x2F;</span><br><span class="line">   if ( valpred &gt; 32767 )</span><br><span class="line">     valpred &#x3D; 32767;</span><br><span class="line">   else if ( valpred &lt; -32768 )</span><br><span class="line">     valpred &#x3D; -32768;</span><br><span class="line"></span><br><span class="line">   &#x2F;* Step 5 - Assemble value, update index and step values *&#x2F;</span><br><span class="line">   delta |&#x3D; sign;</span><br><span class="line">   </span><br><span class="line">   index +&#x3D; indexTable[delta];</span><br><span class="line">   if ( index &lt; 0 ) index &#x3D; 0;</span><br><span class="line">   if ( index &gt; 88 ) index &#x3D; 88;</span><br><span class="line">   step &#x3D; stepsizeTable[index];</span><br><span class="line"></span><br><span class="line">   &#x2F;* Step 6 - Output value *&#x2F;</span><br><span class="line">   if ( bufferstep ) &#123;</span><br><span class="line">       outputbuffer &#x3D; (delta &lt;&lt; 4) &amp; 0xf0;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       *outp++ &#x3D; (delta &amp; 0x0f) | outputbuffer;</span><br><span class="line">   &#125;</span><br><span class="line">   bufferstep &#x3D; !bufferstep;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;* Output last step, if needed *&#x2F;</span><br><span class="line">    if ( !bufferstep )</span><br><span class="line">      *outp++ &#x3D; outputbuffer;</span><br><span class="line">    </span><br><span class="line">    state-&gt;valprev &#x3D; valpred;</span><br><span class="line">    state-&gt;index &#x3D; index;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void adpcm_decoder(char *indata, short *outdata, int len, adpcm_state *state)</span><br><span class="line">&#123;</span><br><span class="line">   signed char *inp;     &#x2F;* Input buffer pointer *&#x2F;</span><br><span class="line">   short *outp;      &#x2F;* output buffer pointer *&#x2F;</span><br><span class="line">   int sign;        &#x2F;* Current adpcm sign bit *&#x2F;</span><br><span class="line">   int delta;       &#x2F;* Current adpcm output value *&#x2F;</span><br><span class="line">   int step;        &#x2F;* Stepsize *&#x2F;</span><br><span class="line">   int valpred;      &#x2F;* Predicted value *&#x2F;</span><br><span class="line">   int vpdiff;          &#x2F;* Current change to valpred *&#x2F;</span><br><span class="line">   int index;       &#x2F;* Current step change index *&#x2F;</span><br><span class="line">   int inputbuffer;      &#x2F;* place to keep next 4-bit value *&#x2F;</span><br><span class="line">   int bufferstep;       &#x2F;* toggle between inputbuffer&#x2F;input *&#x2F;</span><br><span class="line">   short tmp;</span><br><span class="line">   outp &#x3D; outdata;</span><br><span class="line">   inp &#x3D; (signed char *)indata;</span><br><span class="line"></span><br><span class="line">   valpred &#x3D; state-&gt;valprev;</span><br><span class="line">   index &#x3D; state-&gt;index;</span><br><span class="line">   step &#x3D; stepsizeTable[index];</span><br><span class="line"></span><br><span class="line">   bufferstep &#x3D; 0;</span><br><span class="line"></span><br><span class="line">   for ( ; len &gt; 0 ; len-- ) &#123;</span><br><span class="line"></span><br><span class="line">      &#x2F;* Step 1 - get the delta value *&#x2F;</span><br><span class="line">      if ( bufferstep ) &#123;</span><br><span class="line">         delta &#x3D; inputbuffer &amp; 0xf;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">         inputbuffer &#x3D; *inp++;</span><br><span class="line">         delta &#x3D; (inputbuffer &gt;&gt; 4) &amp; 0xf;</span><br><span class="line">      &#125;</span><br><span class="line">      bufferstep &#x3D; !bufferstep;</span><br><span class="line"></span><br><span class="line">      &#x2F;* Step 2 - Find new index value (for later) *&#x2F;</span><br><span class="line">      index +&#x3D; indexTable[delta];</span><br><span class="line">      if ( index &lt; 0 ) index &#x3D; 0;</span><br><span class="line">      if ( index &gt; 88 ) index &#x3D; 88;</span><br><span class="line"></span><br><span class="line">      &#x2F;* Step 3 - Separate sign and magnitude *&#x2F;</span><br><span class="line">      sign &#x3D; delta &amp; 8;</span><br><span class="line">      delta &#x3D; delta &amp; 7;</span><br><span class="line"></span><br><span class="line">      &#x2F;* Step 4 - Compute difference and new predicted value *&#x2F;</span><br><span class="line">      &#x2F;*</span><br><span class="line">      ** Computes &#39;vpdiff &#x3D; (delta+0.5)*step&#x2F;4&#39;, but see comment</span><br><span class="line">      ** in adpcm_coder.</span><br><span class="line">      *&#x2F;</span><br><span class="line">      vpdiff &#x3D; step &gt;&gt; 3;</span><br><span class="line">      if ( delta &amp; 4 ) vpdiff +&#x3D; step;</span><br><span class="line">      if ( delta &amp; 2 ) vpdiff +&#x3D; step&gt;&gt;1;</span><br><span class="line">      if ( delta &amp; 1 ) vpdiff +&#x3D; step&gt;&gt;2;</span><br><span class="line"></span><br><span class="line">      if ( sign )</span><br><span class="line">         valpred -&#x3D; vpdiff;</span><br><span class="line">      else</span><br><span class="line">         valpred +&#x3D; vpdiff;</span><br><span class="line"></span><br><span class="line">      &#x2F;* Step 5 - clamp output value *&#x2F;</span><br><span class="line">      if ( valpred &gt; 32767 )</span><br><span class="line">         valpred &#x3D; 32767;</span><br><span class="line">      else if ( valpred &lt; -32768 )</span><br><span class="line">         valpred &#x3D; -32768;</span><br><span class="line"></span><br><span class="line">      &#x2F;* Step 6 - Update step value *&#x2F;</span><br><span class="line">      step &#x3D; stepsizeTable[index];</span><br><span class="line"></span><br><span class="line">      &#x2F;* Step 7 - Output value *&#x2F;</span><br><span class="line">#ifdef ADPCM_ENDIAN_SWAP</span><br><span class="line">      tmp &#x3D; valpred;</span><br><span class="line">      tmp &#x3D; swap_int16(tmp);</span><br><span class="line">      *outp++ &#x3D; tmp;</span><br><span class="line">#else</span><br><span class="line">      *outp++ &#x3D; valpred;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   state-&gt;valprev &#x3D; valpred;</span><br><span class="line">   state-&gt;index &#x3D; index;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>   .c 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">** adpcm.h - include file for adpcm coder.</span><br><span class="line">**</span><br><span class="line">** Version 1.0, 7-Jul-92.</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">#ifndef _ADPCM_H_</span><br><span class="line">#define _ADPCM_H_</span><br><span class="line"></span><br><span class="line">#include &lt;jni.h&gt;</span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;</span><br><span class="line">#endif</span><br><span class="line">typedef struct adpcm_state_t &#123;</span><br><span class="line">    short valprev;    &#x2F;* Previous output value *&#x2F;</span><br><span class="line">    char index;        &#x2F;* Index into stepsize table *&#x2F;</span><br><span class="line">&#125; adpcm_state;</span><br><span class="line"></span><br><span class="line">extern void adpcm_coder(short *indata, char *outdata, int len, adpcm_state *state);</span><br><span class="line"></span><br><span class="line">extern void adpcm_decoder(char *indata, short *outdata, int len, adpcm_state *state);</span><br><span class="line"></span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br><span class="line">#endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>.h 文件</p>
+<p>调用方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">size_t outLen &#x3D; static_cast&lt;size_t&gt;(length * 2);</span><br><span class="line">char *input &#x3D; ConvertJByteArrayToChars(env, input_stream);</span><br><span class="line">short *output &#x3D; (short*)malloc(outLen);</span><br><span class="line">char* p_out;</span><br><span class="line">adpcm_decoder(input, output, outLen, &amp;state);</span><br><span class="line">p_out &#x3D; (char*)output;</span><br><span class="line">jResult &#x3D; getJByteArray(env, p_out, outLen*2);</span><br><span class="line">free(output);</span><br><span class="line">delete (input);</span><br><span class="line">return jResult;</span><br></pre></td></tr></table></figure>
+
+<p>这个是 C++ 层调用到 Java 方法， Java 层直接写一个接收方法去接收就可以了：</p>
+<p>public static native byte[] adPcmDecoder(byte[] inputStream, int length);</p>
+<p>外部使用：</p>
+<p>byte[] bytes = EncryptionUtils.adPcmDecoder(input, dataLengthSrc);</p>
+<p>返回的 byte 就是解码后的数据。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/12/02/pcm/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/02/BLE%20133%E9%94%99%E8%AF%AF/" class="archive-article-date">
-  	<time datetime="2020-12-02T04:12:05.163Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          开发记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/12/02/BLE%20133%E9%94%99%E8%AF%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">BLE 出现 133 错误</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/02/BLE%20133%E9%94%99%E8%AF%AF/">BLE 出现 133 错误</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-11-26T03:01:17.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/">Hexo 域名配置</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/postman/" class="archive-article-date">
-  	<time datetime="2020-11-26T02:12:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/postman/">postman</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/byte%E6%95%B0%E7%BB%84%E4%B9%8B%E5%90%88%E5%B9%B6-%E5%88%A0%E9%99%A4%E7%AD%89%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-11-26T02:08:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/byte%E6%95%B0%E7%BB%84%E4%B9%8B%E5%90%88%E5%B9%B6-%E5%88%A0%E9%99%A4%E7%AD%89%E6%93%8D%E4%BD%9C/">byte数组之合并,删除等操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/uuid/" class="archive-article-date">
-  	<time datetime="2020-11-26T02:06:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/uuid/">Android UUID.randomUUID()生成唯一数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/23/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-11-23T10:51:39.935Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/23/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">个人博客搭建</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -384,8 +328,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

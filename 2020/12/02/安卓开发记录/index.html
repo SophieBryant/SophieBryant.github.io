@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020 | SophieBryant的博客</title>
+  <title>开发记录 | SophieBryant的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="深漂一族，安卓开发程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SophieBryant的博客">
-<meta property="og:url" content="http://example.com/archives/2020/index.html">
+  <meta name="description" content="com.google.android.exoplayer2.upstream.HttpDataSource$HttpDataSourceException: Unable to connect to…… 开发过程中遇到一个问题，因此记录一下，有的时候请求网络资源的时候，如果使用的 exoplayer2 播放的话，请求的是 htpp 网址，部分手机有可能播放不出来，请求不到对应的内容，因此需要在自己">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发记录">
+<meta property="og:url" content="http://example.com/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="SophieBryant的博客">
-<meta property="og:description" content="深漂一族，安卓开发程序员">
+<meta property="og:description" content="com.google.android.exoplayer2.upstream.HttpDataSource$HttpDataSourceException: Unable to connect to…… 开发过程中遇到一个问题，因此记录一下，有的时候请求网络资源的时候，如果使用的 exoplayer2 播放的话，请求的是 htpp 网址，部分手机有可能播放不出来，请求不到对应的内容，因此需要在自己">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-02T04:16:08.774Z">
+<meta property="article:modified_time" content="2020-12-02T04:17:06.538Z">
 <meta property="article:author" content="Bryant">
 <meta name="twitter:card" content="summary">
   
@@ -130,238 +132,169 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-安卓开发记录" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      开发记录
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+
+        
+        <a href="/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" class="archive-article-date">
   	<time datetime="2020-12-02T04:16:08.774Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">开发记录</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>com.google.android.exoplayer2.upstream.HttpDataSource$HttpDataSourceException: Unable to connect to……</p>
+<p>开发过程中遇到一个问题，因此记录一下，有的时候请求网络资源的时候，如果使用的 exoplayer2 播放的话，请求的是 htpp 网址，部分手机有可能播放不出来，请求不到对应的内容，因此需要在自己项目里面配置一下，配置如下。</p>
+<p>创建一个 xml 文件</p>
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+<base-config cleartextTrafficPermitted="true">
+<trust-anchors>
+<certificates src="system" />
+</trust-anchors>
+</base-config>
+</network-security-config>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>application 引用即可：</p>
+<p>android:networkSecurityConfig=”@xml/network_security_config”</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/02/pcm/" class="archive-article-date">
-  	<time datetime="2020-12-02T04:14:48.085Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/02/pcm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pcm</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/02/pcm/">pcm</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/02/BLE%20133%E9%94%99%E8%AF%AF/" class="archive-article-date">
-  	<time datetime="2020-12-02T04:12:05.163Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/02/BLE%20133%E9%94%99%E8%AF%AF/">BLE 出现 133 错误</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-11-26T03:01:17.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE/">Hexo 域名配置</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/postman/" class="archive-article-date">
-  	<time datetime="2020-11-26T02:12:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/postman/">postman</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/byte%E6%95%B0%E7%BB%84%E4%B9%8B%E5%90%88%E5%B9%B6-%E5%88%A0%E9%99%A4%E7%AD%89%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-11-26T02:08:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/byte%E6%95%B0%E7%BB%84%E4%B9%8B%E5%90%88%E5%B9%B6-%E5%88%A0%E9%99%A4%E7%AD%89%E6%93%8D%E4%BD%9C/">byte数组之合并,删除等操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/uuid/" class="archive-article-date">
-  	<time datetime="2020-11-26T02:06:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/uuid/">Android UUID.randomUUID()生成唯一数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/23/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-11-23T10:51:39.935Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/23/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">个人博客搭建</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -384,8 +317,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
