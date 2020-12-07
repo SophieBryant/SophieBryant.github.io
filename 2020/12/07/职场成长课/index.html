@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>开发记录 | SophieBryant的博客</title>
+  <title>SophieBryant的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="com.google.android.exoplayer2.upstream.HttpDataSource$HttpDataSourceException: Unable to connect to…… 开发过程中遇到一个问题，因此记录一下，有的时候请求网络资源的时候，如果使用的 exoplayer2 播放的话，请求的是 htpp 网址，部分手机有可能播放不出来，请求不到对应的内容，因此需要在自己">
+  <meta name="description" content="title:职场成长课职场虽然不如官场，但是同样需要注意很多细节点，有时候一个不小心，你的职业生涯就到此结束，平时对自己要求高一些总没坏处。 走路走路的姿势很重要，往往可以体现一个人的整体形象，切勿一些奇怪的走姿：大爷步、外八步、内八步、大摇大摆、匆匆忙忙、蹦蹦跳跳。 穿着上班期间最好不要穿奇装异服，比如：古装、cosplay、男扮女装、女扮男装，女生最好不要打扮过于招摇，像类似于低胸、抹胸，黑">
 <meta property="og:type" content="article">
-<meta property="og:title" content="开发记录">
-<meta property="og:url" content="http://example.com/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:title" content="SophieBryant的博客">
+<meta property="og:url" content="http://example.com/2020/12/07/%E8%81%8C%E5%9C%BA%E6%88%90%E9%95%BF%E8%AF%BE/index.html">
 <meta property="og:site_name" content="SophieBryant的博客">
-<meta property="og:description" content="com.google.android.exoplayer2.upstream.HttpDataSource$HttpDataSourceException: Unable to connect to…… 开发过程中遇到一个问题，因此记录一下，有的时候请求网络资源的时候，如果使用的 exoplayer2 播放的话，请求的是 htpp 网址，部分手机有可能播放不出来，请求不到对应的内容，因此需要在自己">
+<meta property="og:description" content="title:职场成长课职场虽然不如官场，但是同样需要注意很多细节点，有时候一个不小心，你的职业生涯就到此结束，平时对自己要求高一些总没坏处。 走路走路的姿势很重要，往往可以体现一个人的整体形象，切勿一些奇怪的走姿：大爷步、外八步、内八步、大摇大摆、匆匆忙忙、蹦蹦跳跳。 穿着上班期间最好不要穿奇装异服，比如：古装、cosplay、男扮女装、女扮男装，女生最好不要打扮过于招摇，像类似于低胸、抹胸，黑">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-12-02T04:16:08.774Z">
-<meta property="article:modified_time" content="2020-12-02T04:17:06.538Z">
+<meta property="article:published_time" content="2020-12-07T01:14:37.124Z">
+<meta property="article:modified_time" content="2020-12-07T01:15:50.567Z">
 <meta property="article:author" content="Bryant">
 <meta name="twitter:card" content="summary">
   
@@ -132,40 +132,18 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-安卓开发记录" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-职场成长课" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      开发记录
-    </h1>
-  
-
-        
-        <a href="/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2020-12-02T04:16:08.774Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>com.google.android.exoplayer2.upstream.HttpDataSource$HttpDataSourceException: Unable to connect to……</p>
-<p>开发过程中遇到一个问题，因此记录一下，有的时候请求网络资源的时候，如果使用的 exoplayer2 播放的话，请求的是 htpp 网址，部分手机有可能播放不出来，请求不到对应的内容，因此需要在自己项目里面配置一下，配置如下。</p>
-<p>创建一个 xml 文件</p>
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-<base-config cleartextTrafficPermitted="true">
-<trust-anchors>
-<certificates src="system" />
-</trust-anchors>
-</base-config>
-</network-security-config>
-
-<p>application 引用即可：</p>
-<p>android:networkSecurityConfig=”@xml/network_security_config”</p>
+        <hr>
+<h2 id="title-职场成长课"><a href="#title-职场成长课" class="headerlink" title="title:职场成长课"></a>title:职场成长课</h2><p>职场虽然不如官场，但是同样需要注意很多细节点，有时候一个不小心，你的职业生涯就到此结束，平时对自己要求高一些总没坏处。</p>
+<p>走路<br>走路的姿势很重要，往往可以体现一个人的整体形象，切勿一些奇怪的走姿：大爷步、外八步、内八步、大摇大摆、匆匆忙忙、蹦蹦跳跳。</p>
+<p>穿着<br>上班期间最好不要穿奇装异服，比如：古装、cosplay、男扮女装、女扮男装，女生最好不要打扮过于招摇，像类似于低胸、抹胸，黑丝袜，肉丝袜，超短裙，露肚脐的小衣服等等的，就尽量不要在上班期间穿了，当然在日常生活爱打扮是好事情，男同胞也不会介意的。男生则更多要注意，不要穿太花里胡哨的衣服，颜色鲜艳的，夏天的时候沙滩裤这种就不要穿了（如果再加上一个人字拖，您是来度假旅游的吧 = =！）</p>
+<p>头发<br>不建议染一些奇奇怪怪颜色，就算喜欢染色，也最好选择一款没那么鲜艳的 ，发型个人建议是可以做一做，提高整体形象。头发过长，女生最好的就是扎起来，男生不建议留长发。发质偏油的，要注意清理。类似的问题还有：掉头发、脱发、白头发、头皮屑等等，也是在职场上需要注意到的一些点</p>
+<p>口腔<br>切勿在办公室吃气味较大的食品，如：榴莲、螺蛳粉、臭豆腐、泡面等等。口臭、有口气的尽量看看医生，肝脾是否消化不良，也有可能暴饮暴食导致的，还是检测检测会好一点吧。牙齿黄的，勤刷牙，饭前饭后漱口，睡前睡后漱口，尽量保持口腔整洁。</p>
+<p>胡子（男）<br>胡子大概是有这几种：山羊胡、落腮胡、八字胡、鬼子胡子、一字胡等等。切勿为了张扬个性/凸显男人特征，尽量能剃就剃了，除非你的脸型和你的年龄达到一定程度，要不然刚步入社会的就直接剃了，清理干净。</p>
 
       
 
@@ -245,7 +223,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/12/07/%E8%81%8C%E5%9C%BA%E6%88%90%E9%95%BF%E8%AF%BE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -259,18 +237,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/12/07/%E8%81%8C%E5%9C%BA%E6%88%90%E9%95%BF%E8%AF%BE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/12/02/pcm/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">pcm</div>
+    <a href="/2020/12/02/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">开发记录</div>
       <i class="icon-circle-right"></i>
     </a>
   
